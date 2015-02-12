@@ -1395,7 +1395,12 @@ function _drush_recipes_command_defaults(&$command) {
   }
   // if no target is set we should utilize @self
   if (empty($command['target'])) {
-    $command['target'] = '@self';
+    if($command !== 'make'){
+      $command['target'] = '@self';
+    }
+    else{
+      $command['target'] = '@none';
+    }
   }
   if (!isset($command['arguments'])) {
     $command['arguments'] = array();
