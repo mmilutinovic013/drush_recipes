@@ -1362,7 +1362,8 @@ function _drush_recipes_require_shell_exec() {
     'eval',
     'ev',
     'updb',
-    'updatedb'
+    'updatedb',
+    'make'
   );
   // hook for commands that require background execution
   drush_command_invoke_all_ref('drush_recipes_require_shell_exec_alter', $exec);
@@ -1393,7 +1394,7 @@ function _drush_recipes_command_defaults(&$command) {
   if (!isset($command['target'])) {
     $command['target'] = drush_get_context('DRUSH_TARGET_SITE_ALIAS');
   }
-  // if no target is set we should utilize @self
+  // if no target is set we should utilize @self unless command is 'make'
   if (empty($command['target'])) {
     if($command !== 'make'){
       $command['target'] = '@self';
