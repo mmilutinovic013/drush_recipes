@@ -1431,6 +1431,7 @@ function _drush_recipes_command_defaults(&$command) {
   }
   if(empty($command['options']['r']) && empty($command['options']['root'])){
     drush_print('???');
+    $command['options']['r'] = '/home/vagrant/sites/drupal7/profiles';
   }
   else{
     drush_print_r($command['options']);
