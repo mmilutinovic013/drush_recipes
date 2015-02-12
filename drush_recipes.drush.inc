@@ -1429,6 +1429,12 @@ function _drush_recipes_command_defaults(&$command) {
       $command['options'][$short] = $val;
     }
   }
+  if(empty($command['options']['r']) && empty($command['options']['root'])){
+    drush_print('???');
+  }
+  else{
+    drush_print_r($command['options']);
+  }
   // pull in the context of the operation
   $context = drush_get_context();
   // test for madlib tokens which should be passed downward so that future
